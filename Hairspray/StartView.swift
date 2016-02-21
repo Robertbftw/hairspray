@@ -67,8 +67,6 @@ class StartView: UIViewController {
         Reach().monitorReachabilityChanges()
         
 //                votingButton()
-        //wat
-        //nee
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }

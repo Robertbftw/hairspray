@@ -12,6 +12,31 @@ import Alamofire
 import SwiftHEXColors
 import Haneke
 
+var amountVote = Int()
+
+let standardMarginTop = CGFloat(64)
+var marginTop = CGFloat(30)
+let screenWidthHalf = CGFloat((screenWidth / 2))
+var extraMarginBorder = CGFloat(0)
+
+var voteslabelXPos = CGFloat()
+var voteslabelYPos = CGFloat()
+var votesYPosPlus =  CGFloat()
+
+var imageXPos = CGFloat()
+var imageYPos = CGFloat()
+var imageYPosPlus =  CGFloat()
+
+var personLabelXPos = CGFloat()
+var personLabelYPos = CGFloat()
+var personLabelYPosPlus = CGFloat()
+
+var voteBtnXPos = CGFloat()
+var voteBtnYPos = CGFloat()
+
+var senderInt = 4567898
+var senderOld =  UIButton()
+
 class voteController: UIViewController {
     
     @IBOutlet var voteBtns: [UIButton]!
@@ -52,19 +77,87 @@ class voteController: UIViewController {
        
         switch deviceCode{
         case 4:
-            mainScreen5()
-            results5()
+            extraMarginBorder = 0
+             
+            imageXPos = CGFloat((screenWidthHalf / 4))
+            imageYPos = CGFloat(10 + standardMarginTop)
+            imageYPosPlus = 160
+            
+            voteslabelXPos = CGFloat(0)
+            voteslabelYPos = CGFloat(165)
+            votesYPosPlus = 160
+            
+            personLabelXPos = CGFloat(0)
+            personLabelYPos = CGFloat(185)
+            personLabelYPosPlus = 160
+            
+            voteBtnXPos = 0
+            voteBtnYPos = standardMarginTop
+            
+            mainScreen()
+            results()
         case 5:
-            mainScreen5()
-            results5()
+            extraMarginBorder = 0
+            
+            imageXPos = CGFloat((screenWidthHalf / 4))
+            imageYPos = CGFloat(10 + standardMarginTop)
+            imageYPosPlus = 160
+            
+            voteslabelXPos = CGFloat(0)
+            voteslabelYPos = CGFloat(165)
+            votesYPosPlus = 160
+            
+            personLabelXPos = CGFloat(0)
+            personLabelYPos = CGFloat(183)
+            personLabelYPosPlus = 160
+            
+            voteBtnXPos = 0
+            voteBtnYPos = standardMarginTop
+            
+            mainScreen()
+            results()
         case 6:
-            mainScreen6()
-            results6()
+            extraMarginBorder = 0
+            
+            imageXPos = CGFloat((screenWidthHalf / 4))
+            imageYPos = CGFloat(20 + standardMarginTop)
+            imageYPosPlus = 190
+            
+            voteslabelXPos = CGFloat(0)
+            voteslabelYPos = CGFloat(185)
+            votesYPosPlus = 190
+            
+            personLabelXPos = CGFloat(0)
+            personLabelYPos = CGFloat(203)
+            personLabelYPosPlus = 190
+            
+            voteBtnXPos = 0
+            voteBtnYPos = standardMarginTop
+            
+            mainScreen()
+            results()
         case 7:
-            results6p()
-            mainScreen6p()
+            extraMarginBorder = 0
+             
+            imageXPos = CGFloat((screenWidthHalf / 4))
+            imageYPos = CGFloat(20 + standardMarginTop)
+            imageYPosPlus = 205
+            
+            voteslabelXPos = CGFloat(0)
+            voteslabelYPos = CGFloat(200)
+            votesYPosPlus = 205
+            
+            personLabelXPos = CGFloat(0)
+            personLabelYPos = CGFloat(218)
+            personLabelYPosPlus = 205
+            
+            voteBtnXPos = 0
+            voteBtnYPos = standardMarginTop
+            
+            mainScreen()
+            results()
         default:
-            mainScreen5()
+            mainScreen()
         }
        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
@@ -112,7 +205,7 @@ class voteController: UIViewController {
         NSUserDefaults.standardUserDefaults().setInteger(person, forKey: "votedForPerson")
     }
     
-    func results5() {
+    func results() {
         var isError = Bool()
         let url = "http://school.robxert.com/hairspray/getVotesNew.php"
         var responseJSON = NSData()
@@ -129,33 +222,20 @@ class voteController: UIViewController {
                 }
             }
             .responseString { response in
-                
-                let standardMarginTop = CGFloat(64)
-                var marginTop = CGFloat(30)
-                let screenWidthHalf = CGFloat((screenWidth / 2))
-                var extraMarginBorder = CGFloat(0)
-                
-                var imageXPos = CGFloat((screenWidthHalf / 4))
-                var imageYPos = CGFloat(20 + standardMarginTop)
-                
-                var labelXPos = CGFloat(0)
-                var labelYPos = CGFloat(155)
-                
+
                 if isError == false {
                     responseJSON = response.result.value!.dataUsingEncoding(NSUTF8StringEncoding)!
                     let readableJSON = JSON(data: responseJSON, options: NSJSONReadingOptions.MutableContainers)
                     
                     let amount = readableJSON.arrayValue
+                    amountVote = amount.count
                     //                    print(amount.count)
-                    
+                    self.voting()
                     for (var i = 0; i < amount.count; i += 1){
-                        
                         
                         let borderDown = UIImageView()
                         let borderMiddle = UIImageView()
                         let votesLabel = UILabel()
-                        
-                        
                         
                         borderDown.image = UIImage(named: "pink-box")
                         borderDown.frame = CGRectMake(0, (screenWidthHalf + standardMarginTop + extraMarginBorder), screenWidth, 2)
@@ -163,10 +243,8 @@ class voteController: UIViewController {
                         borderMiddle.image = UIImage(named: "pink-box")
                         borderMiddle.frame = CGRectMake((screenWidthHalf - 1), (standardMarginTop + extraMarginBorder), 2, screenWidthHalf)
                         
-                        
-                        
                         votesLabel.text = "\(readableJSON[i].stringValue)% van de stemmen"
-                        votesLabel.frame = CGRectMake(labelXPos, labelYPos, screenWidthHalf, 20)
+                        votesLabel.frame = CGRectMake(voteslabelXPos, voteslabelYPos, screenWidthHalf, 20)
                         votesLabel.textAlignment = .Center
                         votesLabel.font = UIFont(name: "GurmukhiMN", size: 14)
                         votesLabel.textColor = UIColor(hexString: "#CB99C9")
@@ -178,17 +256,14 @@ class voteController: UIViewController {
                         extraMarginBorder = screenWidthHalf + extraMarginBorder
                         
                         if (i % 2) == 0{
-                            labelXPos = screenWidthHalf
-                            
+                            voteslabelXPos = screenWidthHalf
                             
                         } else {
-                            labelXPos = 0
-                            labelYPos = labelYPos + 165
+                            voteslabelXPos = 0
+                            voteslabelYPos = voteslabelYPos + votesYPosPlus
                             
                             
                         }
-                        
-                        
                         self.scrollView.contentSize.height = CGFloat(Int((screenWidth / 2)) * (amount.count / 2) + 64)
                     }
                     
@@ -197,7 +272,7 @@ class voteController: UIViewController {
         
     }
     
-    func mainScreen5(){
+    func mainScreen(){
         var isError = Bool()
         let url = "http://school.robxert.com/hairspray/candidatesInfo.php"
         var responseJSON = NSData()
@@ -215,14 +290,7 @@ class voteController: UIViewController {
             }
             .responseString { response in
                 
-                let standardMarginTop = CGFloat(64)
-                let screenWidthHalf = CGFloat((screenWidth / 2))
-                
-                var imageXPos = CGFloat((screenWidthHalf / 4))
-                var imageYPos = CGFloat(10 + standardMarginTop)
-                
-                var labelXPos = CGFloat(0)
-                var labelYPos = CGFloat(175)
+
                 
                 if isError == false {
                     responseJSON = response.result.value!.dataUsingEncoding(NSUTF8StringEncoding)!
@@ -236,7 +304,7 @@ class voteController: UIViewController {
                         let personIMG = UIImageView()
                         
                         personName.text = readableJSON[i]["name"].stringValue
-                        personName.frame = CGRectMake(labelXPos, labelYPos, screenWidthHalf, 20)
+                        personName.frame = CGRectMake(personLabelXPos, personLabelYPos, screenWidthHalf, 20)
                         personName.textAlignment = .Center
                         personName.textColor = UIColor(hexString: "#779ECB")
                         personName.font = UIFont(name: "GurmukhiMN", size: 14)
@@ -267,14 +335,14 @@ class voteController: UIViewController {
                         if (i % 2) == 0{
                             imageXPos = ((screenWidthHalf / 4) + screenWidthHalf)
                             
-                            labelXPos = screenWidthHalf
+                            personLabelXPos = screenWidthHalf
                             
                         } else {
-                            imageYPos = CGFloat(imageYPos + 160)
+                            imageYPos = CGFloat(imageYPos + imageYPosPlus)
                             imageXPos = (screenWidthHalf / 4)
                             
-                            labelXPos = 0
-                            labelYPos = labelYPos + 165
+                            personLabelXPos = 0
+                            personLabelYPos = personLabelYPos + personLabelYPosPlus
                         }
                         
                     }
@@ -282,343 +350,55 @@ class voteController: UIViewController {
         }
     }
     
-    func results6() {
-        var isError = Bool()
-        let url = "http://school.robxert.com/hairspray/getVotesNew.php"
-        var responseJSON = NSData()
-        Alamofire.request(.GET, url)
-            .response { request, response, data, error in
-                //                print(request)
-                //                print(response)
-                //                print("Error: \(error)")
+    func voting(){
         
-                if (error != nil) {
-                    isError = true
-                } else {
-                    isError = false
-                }
-            }
-            .responseString { response in
-                
-                let standardMarginTop = CGFloat(64)
-                var marginTop = CGFloat(30)
-                let screenWidthHalf = CGFloat((screenWidth / 2))
-                var extraMarginBorder = CGFloat(0)
-                
-                var imageXPos = CGFloat((screenWidthHalf / 4))
-                var imageYPos = CGFloat(20 + standardMarginTop)
+        print(amountVote)
+        for(var i = 0; i < amountVote; i += 1){
             
-                var labelXPos = CGFloat(0)
-                var labelYPos = CGFloat(185)
+            let voteBtn = UIButton()
+            
+            voteBtn.frame = CGRectMake(voteBtnXPos, voteBtnYPos, screenWidthHalf, screenWidthHalf)
+            
+            voteBtn.tag = i
+            voteBtn.addTarget(self, action: "voteNow:", forControlEvents: UIControlEvents.TouchUpInside)
+            voteBtn.titleLabel?.font = UIFont(name: "GurmukhiMN", size: 18)
+            
+            self.scrollView.addSubview(voteBtn)
+            
+            if (i % 2) == 0{
+                voteBtnXPos = screenWidthHalf
                 
-                if isError == false {
-                    responseJSON = response.result.value!.dataUsingEncoding(NSUTF8StringEncoding)!
-                    let readableJSON = JSON(data: responseJSON, options: NSJSONReadingOptions.MutableContainers)
-                    
-                    let amount = readableJSON.arrayValue
-//                    print(amount.count)
-                    
-                    for (var i = 0; i < amount.count; i += 1){
-                        
-                        
-                        let borderDown = UIImageView()
-                        let borderMiddle = UIImageView()
-                        let votesLabel = UILabel()
-                        
-                        
-                        
-                        borderDown.image = UIImage(named: "pink-box")
-                        borderDown.frame = CGRectMake(0, (screenWidthHalf + standardMarginTop + extraMarginBorder), screenWidth, 2)
-                        
-                        borderMiddle.image = UIImage(named: "pink-box")
-                        borderMiddle.frame = CGRectMake((screenWidthHalf - 1), (standardMarginTop + extraMarginBorder), 2, screenWidthHalf)
-                        
-
-                        
-                        votesLabel.text = "\(readableJSON[i].stringValue)% van de stemmen"
-                        votesLabel.frame = CGRectMake(labelXPos, labelYPos, screenWidthHalf, 20)
-                        votesLabel.textAlignment = .Center
-                        votesLabel.font = UIFont(name: "GurmukhiMN", size: 17)
-                        votesLabel.textColor = UIColor(hexString: "#CB99C9")
-                        
-                        self.scrollView.addSubview(borderDown)
-                        self.scrollView.addSubview(borderMiddle)
-                        self.scrollView.addSubview(votesLabel)
-                        
-                        extraMarginBorder = screenWidthHalf + extraMarginBorder
-                        
-                        if (i % 2) == 0{
-                            labelXPos = screenWidthHalf
-                            
-                            
-                        } else {
-                            labelXPos = 0
-                            labelYPos = labelYPos + 190
-                            
-                            
-                        }
-                        
-                                                
-                        self.scrollView.contentSize.height = CGFloat(Int((screenWidth / 2)) * (amount.count / 2) + 64)
-                    }
-                    
-                }
-        }
-    
-    }
-    
-    func mainScreen6(){
-        var isError = Bool()
-        let url = "http://school.robxert.com/hairspray/candidatesInfo.php"
-        var responseJSON = NSData()
-        Alamofire.request(.GET, url)
-            .response { request, response, data, error in
-                //                print(request)
-                //                print(response)
-                //                print("Error: \(error)")
-                
-                if (error != nil) {
-                    isError = true
-                } else {
-                    isError = false
-                }
+            } else {
+                voteBtnXPos = 0
+                voteBtnYPos = voteBtnYPos + screenWidthHalf
             }
-            .responseString { response in
-                
-                let standardMarginTop = CGFloat(64)
-                let screenWidthHalf = CGFloat((screenWidth / 2))
-                
-                var imageXPos = CGFloat((screenWidthHalf / 4))
-                var imageYPos = CGFloat(20 + standardMarginTop)
-                
-                var labelXPos = CGFloat(0)
-                var labelYPos = CGFloat(210)
-                
-                if isError == false {
-                    responseJSON = response.result.value!.dataUsingEncoding(NSUTF8StringEncoding)!
-                    let readableJSON = JSON(data: responseJSON, options: NSJSONReadingOptions.MutableContainers)
-                    
-                    let amount = readableJSON.arrayValue
-                    
-                    for (var i = 0; i < amount.count; i += 1){
-                        
-                        let personName = UILabel()
-                        let personIMG = UIImageView()
-                        
-                        personName.text = readableJSON[i]["name"].stringValue
-                        personName.frame = CGRectMake(labelXPos, labelYPos, screenWidthHalf, 20)
-                        personName.textAlignment = .Center
-                        personName.textColor = UIColor(hexString: "#779ECB")
-                        personName.font = UIFont(name: "GurmukhiMN", size: 17)
-                        
-                        let imgJSON = readableJSON[i]["img"].stringValue
-                        
-                        let url = NSURL(string: "http://school.robxert.com/hairspray/admin/inc/img/\(imgJSON)")
-                        let data = NSData(contentsOfURL: url!)
-                        
-                        if (data != nil) {
-                            personIMG.hnk_setImageFromURL(url!, placeholder: UIImage(named: "placeholder1.png"), format: Format<UIImage>(name: "image"), failure: { (error) -> () in }) { (image) -> () in
-                                personIMG.image = image
-                            }
-                        } else {
-                            personIMG.image = UIImage(named: "placeholder1.png")
-                        }
-                        personIMG.frame = CGRectMake(imageXPos, imageYPos, (screenWidthHalf / 2), (screenWidthHalf / 2))
-                        personIMG.contentMode = .ScaleAspectFill
-                        personIMG.layer.borderWidth=2.0
-                        personIMG.layer.masksToBounds = false
-                        personIMG.layer.borderColor = UIColor(hexString: "#779ECB")!.CGColor
-                        personIMG.layer.cornerRadius = personIMG.frame.size.height/2
-                        personIMG.clipsToBounds = true
-                        
-                        self.scrollView.addSubview(personIMG)
-                        self.scrollView.addSubview(personName)
-                        
-                        if (i % 2) == 0{
-                            imageXPos = ((screenWidthHalf / 4) + screenWidthHalf)
-                            
-                            labelXPos = screenWidthHalf
-                            
-                        } else {
-                            imageYPos = CGFloat(imageYPos + 190)
-                            imageXPos = (screenWidthHalf / 4)
-                            
-                            labelXPos = 0
-                            labelYPos = labelYPos + 190
-                        }
-
-                    }
-                }
-        }
-    }
-    
-    func results6p() {
-        var isError = Bool()
-        let url = "http://school.robxert.com/hairspray/getVotesNew.php"
-        var responseJSON = NSData()
-        Alamofire.request(.GET, url)
-            .response { request, response, data, error in
-                //                print(request)
-                //                print(response)
-                //                print("Error: \(error)")
-                
-                if (error != nil) {
-                    isError = true
-                } else {
-                    isError = false
-                }
-            }
-            .responseString { response in
-                
-                let standardMarginTop = CGFloat(64)
-                var marginTop = CGFloat(30)
-                let screenWidthHalf = CGFloat((screenWidth / 2))
-                var extraMarginBorder = CGFloat(0)
-                
-                var imageXPos = CGFloat((screenWidthHalf / 4))
-                var imageYPos = CGFloat(20 + standardMarginTop)
-                
-                var labelXPos = CGFloat(0)
-                var labelYPos = CGFloat(190)
-                
-                if isError == false {
-                    responseJSON = response.result.value!.dataUsingEncoding(NSUTF8StringEncoding)!
-                    let readableJSON = JSON(data: responseJSON, options: NSJSONReadingOptions.MutableContainers)
-                    
-                    let amount = readableJSON.arrayValue
-                    //                    print(amount.count)
-                    
-                    for (var i = 0; i < amount.count; i += 1){
-                        
-                        
-                        let borderDown = UIImageView()
-                        let borderMiddle = UIImageView()
-                        let votesLabel = UILabel()
-                        
-                        
-                        
-                        borderDown.image = UIImage(named: "pink-box")
-                        borderDown.frame = CGRectMake(0, (screenWidthHalf + standardMarginTop + extraMarginBorder), screenWidth, 2)
-                        
-                        borderMiddle.image = UIImage(named: "pink-box")
-                        borderMiddle.frame = CGRectMake((screenWidthHalf - 1), (standardMarginTop + extraMarginBorder), 2, screenWidthHalf)
-                        
-                        
-                        
-                        votesLabel.text = "\(readableJSON[i].stringValue)% van de stemmen"
-                        votesLabel.frame = CGRectMake(labelXPos, labelYPos, screenWidthHalf, 20)
-                        votesLabel.textAlignment = .Center
-                        votesLabel.font = UIFont(name: "GurmukhiMN", size: 17)
-                        votesLabel.textColor = UIColor(hexString: "#CB99C9")
-                        
-                        self.scrollView.addSubview(borderDown)
-                        self.scrollView.addSubview(borderMiddle)
-                        self.scrollView.addSubview(votesLabel)
-                        
-                        extraMarginBorder = screenWidthHalf + extraMarginBorder
-                        
-                        if (i % 2) == 0{
-                            labelXPos = screenWidthHalf
-                            
-                            
-                        } else {
-                            labelXPos = 0
-                            labelYPos = labelYPos + 205
-                        }
-                        
-                        
-                        self.scrollView.contentSize.height = CGFloat(Int((screenWidth / 2)) * (amount.count / 2) + 64)
-                    }
-                    
-                }
+            
         }
         
     }
     
-    func mainScreen6p(){
-        var isError = Bool()
-        let url = "http://school.robxert.com/hairspray/candidatesInfo.php"
-        var responseJSON = NSData()
-        Alamofire.request(.GET, url)
-            .response { request, response, data, error in
-                //                print(request)
-                //                print(response)
-                //                print("Error: \(error)")
-                
-                if (error != nil) {
-                    isError = true
-                } else {
-                    isError = false
-                }
+    func voteNow(sender:UIButton!){
+        print(sender.tag)
+        
+        if senderInt == sender.tag{
+            print("vote")
+        } else if senderInt != sender.tag {
+            
+            senderOld.setBackgroundImage(UIImage(named: "trans"), forState: .Normal)
+            senderOld.setTitle("", forState: .Normal)
+            sender.alpha = 0
+            
+            UIView.animateWithDuration(0.3){
+                sender.alpha = 1
             }
-            .responseString { response in
-                
-                let standardMarginTop = CGFloat(64)
-                let screenWidthHalf = CGFloat((screenWidth / 2))
-                
-                var imageXPos = CGFloat((screenWidthHalf / 4))
-                var imageYPos = CGFloat(20 + standardMarginTop)
-                
-                var labelXPos = CGFloat(0)
-                var labelYPos = CGFloat(215)
-                
-                if isError == false {
-                    responseJSON = response.result.value!.dataUsingEncoding(NSUTF8StringEncoding)!
-                    let readableJSON = JSON(data: responseJSON, options: NSJSONReadingOptions.MutableContainers)
-                    
-                    let amount = readableJSON.arrayValue
-                    
-                    for (var i = 0; i < amount.count; i += 1){
-                        
-                        let personName = UILabel()
-                        let personIMG = UIImageView()
-                        
-                        personName.text = readableJSON[i]["name"].stringValue
-                        personName.frame = CGRectMake(labelXPos, labelYPos, screenWidthHalf, 20)
-                        personName.textAlignment = .Center
-                        personName.textColor = UIColor(hexString: "#779ECB")
-                        personName.font = UIFont(name: "GurmukhiMN", size: 17)
-                        
-                        let imgJSON = readableJSON[i]["img"].stringValue
-                        
-                        let url = NSURL(string: "http://school.robxert.com/hairspray/admin/inc/img/\(imgJSON)")
-                        let data = NSData(contentsOfURL: url!)
-                        
-                        if (data != nil) {
-                            personIMG.hnk_setImageFromURL(url!, placeholder: UIImage(named: "placeholder1.png"), format: Format<UIImage>(name: "image"), failure: { (error) -> () in }) { (image) -> () in
-                                personIMG.image = image
-                            }
-                        } else {
-                            personIMG.image = UIImage(named: "placeholder1.png")
-                        }
-                        personIMG.frame = CGRectMake(imageXPos, imageYPos, (screenWidthHalf / 2), (screenWidthHalf / 2))
-                        personIMG.contentMode = .ScaleAspectFill
-                        personIMG.layer.borderWidth=2.0
-                        personIMG.layer.masksToBounds = false
-                        personIMG.layer.borderColor = UIColor(hexString: "#779ECB")!.CGColor
-                        personIMG.layer.cornerRadius = personIMG.frame.size.height/2
-                        personIMG.clipsToBounds = true
-                        
-                        self.scrollView.addSubview(personIMG)
-                        self.scrollView.addSubview(personName)
-                        
-                        if (i % 2) == 0{
-                            imageXPos = ((screenWidthHalf / 4) + screenWidthHalf)
-                            
-                            labelXPos = screenWidthHalf
-                            
-                        } else {
-                            imageYPos = CGFloat(imageYPos + 205)
-                            imageXPos = (screenWidthHalf / 4)
-                            
-                            labelXPos = 0
-                            labelYPos = labelYPos + 205
-
-                        }
-                        
-                    }
-                }
+            
+            sender.setBackgroundImage(UIImage(named: "pink-box-40"), forState: .Normal)
+            sender.setTitle("Bevestig", forState: .Normal)
         }
+        
+        senderOld = sender
+        senderInt = sender.tag
+        
     }
     
     func resultsScreen(){

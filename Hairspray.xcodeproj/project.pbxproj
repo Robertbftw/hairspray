@@ -29,6 +29,7 @@
 		E18D44C61C7102E200A75D13 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18D44C51C7102E200A75D13 /* StartView.swift */; };
 		E1B3F3931C76551400BEDA28 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3F3921C76551400BEDA28 /* Articles.swift */; };
 		E1B3F3951C765CB400BEDA28 /* pink-box.png in Resources */ = {isa = PBXBuildFile; fileRef = E1B3F3941C765CB400BEDA28 /* pink-box.png */; };
+		E1E143C11C79E715004F6114 /* trans.png in Resources */ = {isa = PBXBuildFile; fileRef = E1E143C01C79E715004F6114 /* trans.png */; };
 		E1FA38F51C74DB35006C2EEF /* voyage_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1FA38F41C74D91D006C2EEF /* voyage_regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		E18D44C51C7102E200A75D13 /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		E1B3F3921C76551400BEDA28 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		E1B3F3941C765CB400BEDA28 /* pink-box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pink-box.png"; path = "Assets.xcassets/pink-box.imageset/pink-box.png"; sourceTree = "<group>"; };
+		E1E143C01C79E715004F6114 /* trans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trans.png; sourceTree = "<group>"; };
 		E1FA38F41C74D91D006C2EEF /* voyage_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = voyage_regular.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 				E18D44971C71016B00A75D13 /* Assets.xcassets */,
 				E10B4EFA1C725D6F00345487 /* placeholder1.png */,
 				E1B3F3941C765CB400BEDA28 /* pink-box.png */,
+				E1E143C01C79E715004F6114 /* trans.png */,
 				E18D44991C71016B00A75D13 /* LaunchScreen.storyboard */,
 				E18D449C1C71016B00A75D13 /* Info.plist */,
 				E12F72271C712DE800A8370E /* Fabric.framework */,
@@ -380,6 +383,7 @@
 				E18D44BF1C71027800A75D13 /* iPhone4.storyboard in Resources */,
 				E18D44C31C71028A00A75D13 /* iPhone6P.storyboard in Resources */,
 				E18D449B1C71016B00A75D13 /* LaunchScreen.storyboard in Resources */,
+				E1E143C11C79E715004F6114 /* trans.png in Resources */,
 				E18D44981C71016B00A75D13 /* Assets.xcassets in Resources */,
 				E18D44C11C71028200A75D13 /* iPhone5.storyboard in Resources */,
 				E10B4EF91C72554A00345487 /* Podfile in Resources */,
