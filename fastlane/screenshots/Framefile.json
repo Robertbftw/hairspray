@@ -1,0 +1,83 @@
+{
+  "default": {
+    "keyword": {
+      "fonts": [
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["de-DE", "en-US", "es-ES", "fr-FR", "it-IT", "nl-NL", "sv-SE", "pt-BR"]
+        },
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["zcmn-Hans"]
+        },
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["ja-JP"]
+        },
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["ko-KR"]
+        },
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["ru-RU"]
+        }
+      ]
+    },
+    "title": {
+      "fonts": [
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["de-DE", "en-US", "es-ES", "fr-FR", "it-IT", "nl-NL", "sv-SE", "pt-BR"]
+        },
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["zcmn-Hans"]
+        },
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["ja-JP"]
+        },
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["ko-KR"]
+        },
+        {
+          "font": "./fonts/voyage_regular.ttf",
+          "supported": ["ru-RU"]
+        }
+      ],
+      "color": "#ffffff"
+    },
+    "background": "./pink-box.png",
+    "padding": 50
+  },
+
+
+  "data": [
+    {
+      "filter": "Brainstorming",
+      "keyword": {
+        "color": "#d21559"
+      }
+    },
+    {
+      "filter": "Organizing",
+      "keyword": {
+        "color": "#feb909"
+      }
+    },
+    {
+      "filter": "Sharing",
+      "keyword": {
+        "color": "#aa4dbc"
+      }
+    },
+    {
+      "filter": "Styling",
+      "keyword": {
+        "color": "#31bb48"
+      }
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ycL-RF-US4">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="voyage_regular.ttf">
+            <string>Voyage</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Vote Controller-->
+        <scene sceneID="PYj-Tt-Wk0">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="8X9-7D-XRH" customClass="voteController" customModule="Hairspray" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dAp-nh-aHc"/>
+                        <viewControllerLayoutGuide type="bottom" id="V0C-rA-VSN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nni-MR-rM4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQm-XQ-dlO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="scrollView" destination="AQm-XQ-dlO" id="jsF-8f-IN1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KqC-1W-WQK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="277" y="-662"/>
+        </scene>
+        <!--Start View-->
+        <scene sceneID="0Ej-xQ-FKK">
+            <objects>
+                <viewController storyboardIdentifier="home" modalTransitionStyle="crossDissolve" id="ycL-RF-US4" customClass="StartView" customModule="Hairspray" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Abc-rW-SfC"/>
+                        <viewControllerLayoutGuide type="bottom" id="bgh-hV-JL1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D5L-DM-heo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btF-qI-Tiu">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem id="V7q-z9-DAk"/>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-hairspray" translatesAutoresizingMaskIntoConstraints="NO" id="cbV-7i-IA5">
+                                <rect key="frame" x="116" y="30" width="89" height="24"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3O-Yy-z7l">
+                                <rect key="frame" x="7" y="27" width="33" height="33"/>
+                                <state key="normal" title="Button" image="list-menu"/>
+                            </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink-box" translatesAutoresizingMaskIntoConstraints="NO" id="ujR-Ra-aGh">
+                                <rect key="frame" x="0.0" y="160" width="320" height="2"/>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wb1-GB-4ZV">
+                                <rect key="frame" x="18" y="89" width="285" height="42"/>
+                                <color key="backgroundColor" red="0.46666666670000001" green="0.61960784310000006" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Voyage" family="Voyage" pointSize="30"/>
+                                <size key="titleShadowOffset" width="-1" height="1"/>
+                                <state key="normal" title="Stem Nu">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.82039331900000001" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="voteNowBtn:" destination="ycL-RF-US4" eventType="touchUpInside" id="c0M-3P-PUI"/>
+                                    <segue destination="8X9-7D-XRH" kind="show" id="6tZ-K0-lef"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-Xa-9b1">
+                                <rect key="frame" x="0.0" y="160" width="320" height="408"/>
+                                <connections>
+                                    <segue destination="VNP-Wl-qis" kind="embed" id="yIQ-UT-ph8"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="articlesView" destination="Xvn-Xa-9b1" id="hrX-Ht-Hwh"/>
+                        <outlet property="votingBtn" destination="wb1-GB-4ZV" id="B5d-cp-t5Z"/>
+                        <outlet property="votingDevider" destination="ujR-Ra-aGh" id="gUt-EP-OKy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7IG-4T-Yvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="277" y="9"/>
+        </scene>
+        <!--Article Controller-->
+        <scene sceneID="rAV-m7-7qJ">
+            <objects>
+                <viewController storyboardIdentifier="article" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="ju5-iu-J0N" customClass="ArticleController" customModule="Hairspray" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="anA-MP-LMQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="QfK-HS-f0h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NyJ-H1-Jq7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGB-qc-NJs">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="scrollView" destination="KGB-qc-NJs" id="mYI-s6-mPd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfC-dv-k2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="720" y="225"/>
+        </scene>
+        <!--Articles-->
+        <scene sceneID="YQQ-FB-wyh">
+            <objects>
+                <viewController id="VNP-Wl-qis" customClass="Articles" customModule="Hairspray" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KL6-nk-Kf3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qkx-qr-MIs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L2n-od-aND">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="408"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3M1-wl-Rp2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="408"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="3M1-wl-Rp2" id="0lH-TK-u2C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="33g-lk-n7n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="-71"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="list-menu" width="66" height="66"/>
+        <image name="logo-hairspray" width="574" height="153"/>
+        <image name="pink-box" width="5" height="5"/>
+    </resources>
+</document>
